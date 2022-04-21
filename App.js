@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Text, View } from 'react-native';
 import axios from 'axios';
 
@@ -11,11 +11,14 @@ const App = () => {
 
   const [movie, setMovie] = useState('');
 
-  getPopularMovies().then(movies => {
-    setMovie(movies[0]);
+  // use effect for runtime once
+  useEffect(() => {
+    getPopularMovies().then(movies => {
+      setMovie(movies[0]);
+    });
   });
 
-
+ 
   return (
     <View
       style={{
