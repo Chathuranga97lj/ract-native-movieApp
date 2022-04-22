@@ -1,5 +1,6 @@
 import React from 'react';
-import {View, Text, StyleSheet, FlatList, Dimensions} from 'react-native'
+import {View, Text, StyleSheet, FlatList, Dimensions} from 'react-native';
+import Cards from './Cards';
 class List extends React.PureComponent {
   render() {
     const {title, content} = this.props;
@@ -11,7 +12,7 @@ class List extends React.PureComponent {
          <FlatList 
         data={content} 
         horizontal = {true}
-        renderItem={({item}) => <Text>{item.title}</Text>}>  
+        renderItem={({item}) => <Cards item={item} />}>  
         </FlatList>  
       </View>
     );

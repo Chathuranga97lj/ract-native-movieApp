@@ -38,19 +38,19 @@ const Home = () => {
 
   return (
     <React.Fragment>
-    <View style={styles.stliderContainer}>
-      <SliderBox
-        images={moviesImages}
-        dotStyle={styles.sliderStyle}
-        sliderBoxHeight={dimensions.height / 1.5}
-        autoplay={true}
-        circleLoop={true}
-      />
-    </View>
-   
-    <View style={styles.carousel}>
-      <List title="My List Component Title" content={popularMovies}></List>
-    </View>
+      <View style={styles.stliderContainer}>
+        <SliderBox
+          images={moviesImages}
+          dotStyle={styles.sliderStyle}
+          sliderBoxHeight={dimensions.height / 1.5}
+          autoplay={true}
+          circleLoop={true}
+        />
+      </View>
+
+      <View style={styles.carousel}>
+        <List title="Popular Movies" content={popularMovies} />
+      </View>
     </React.Fragment>
   );
 };
