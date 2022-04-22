@@ -7,8 +7,8 @@ const App = () => {
     <View
       style={{
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
+        justifyContent: 'center',
+        alignItems: 'center',
       }}>
       <Home />
     </View>

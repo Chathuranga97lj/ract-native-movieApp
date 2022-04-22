@@ -1,30 +1,59 @@
 import React, {useState, useEffect} from 'react';
-import {Text, View} from 'react-native';
-import {getPopularMovies} from '../services/services';
+import {Text, View, StyleSheet, Dimensions} from 'react-native';
+import {getUpcomingMovies, getPopularMovies} from '../services/services';
+import {SliderBox} from 'react-native-image-slider-box';
+
+const dimensions = Dimensions.get('screen');
 
 const Home = () => {
-  const [movie, setMovie] = useState('');
+  const [moviesImages, setMoviesImages] = useState('');
   const [error, setError] = useState(false);
-  
+
   // use effect for runtime once
   useEffect(() => {
-    getPopularMovies()
+    getUpcomingMovies()
       .then(movies => {
-        setMovie(movies[0]);
+        const moviesImagesArray = [];
+        movies.forEach(movie => {
+          moviesImagesArray.push(
+            'https://image.tmdb.org/t/p/w500' + movie.poster_path
+          );
+        });
+        setMoviesImages(moviesImagesArray);
       })
       .catch(err => {
         setError(err);
+      });  
+
+    getPopularMovies()
+      .then(movies => {})
+      .catch(err => {
+        setError(err);
       });
-  });
+  }, []);
 
   return (
-    <View>
-      <Text>Movie Name: {movie.original_title}</Text>
-      <Text>Movie Langulage: {movie.original_language}</Text>
-      <Text>Release Date: {movie.release_date}</Text>
-      {error && <Text style={{color: 'red'}}>Error in the server</Text>}
+    <View style={styles.stliderContainer}>
+      <SliderBox
+        images={moviesImages}
+        dotStyle={styles.sliderStyle}
+        sliderBoxHeight={dimensions.height / 1.5}
+        autoplay={true}
+        circleLoop={true}
+      />
     </View>
-);
+  );
 };
+
+const styles = StyleSheet.create({
+  stliderContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  sliderStyle: {
+    height:0
+  }
+})
 
 export default Home;
