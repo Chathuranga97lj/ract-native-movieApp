@@ -1,7 +1,12 @@
 import React from 'react';
-import {TouchableOpacity, StyleSheet, Image, Text} from 'react-native'
+import {TouchableOpacity, StyleSheet, Image, Text} from 'react-native';
+import PropsTypes from 'prop-types';
 
 const placeHolderImage = require('../assets/images/placeholder.png');
+
+const propTypes = {
+    item: PropsTypes.object, 
+}
 class Cards extends React.PureComponent {
   render() {
     const {item} = this.props;
@@ -42,5 +47,7 @@ const styles = StyleSheet.create({
       color: 'black'  
   }
 });
+
+Cards.propTypes = propTypes;
 
 export default Cards;
