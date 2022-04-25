@@ -5,7 +5,7 @@ import PropsTypes from 'prop-types';
 const placeHolderImage = require('../assets/images/placeholder.png');
 
 const propTypes = {
-    item: PropsTypes.object, 
+  item: PropsTypes.object,
 }
 class Cards extends React.PureComponent {
   render() {
@@ -13,15 +13,17 @@ class Cards extends React.PureComponent {
     return (
       <TouchableOpacity style={styles.container}>
         <Image
-          resizeMode='cover'
+          resizeMode="cover"
           style={styles.image}
           source={
-            item.poster_path ?   
-            {uri: 'https://image.tmdb.org/t/p/w500' + item.poster_path}
-            : placeHolderImage
-        }
+            item.poster_path
+              ? {uri: 'https://image.tmdb.org/t/p/w500' + item.poster_path}
+              : placeHolderImage
+          }
         />
-        {!item.poster_path && (<Text style={styles.movieName}>{item.title}</Text>)}
+        {!item.poster_path && (
+          <Text style={styles.movieName}>{item.title}</Text>
+        )}
       </TouchableOpacity>
     );
   }
@@ -40,11 +42,11 @@ const styles = StyleSheet.create({
     borderRadius: 20
   },
   movieName: {
-      position: 'absolute',
-      width: 100,
-      textAlign: 'center',
-      top: 10,
-      color: 'black'  
+    position: 'absolute',
+    width: 100,
+    textAlign: 'center',
+    top: 10,
+    color: 'black',
   }
 });
 
