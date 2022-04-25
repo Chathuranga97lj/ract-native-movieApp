@@ -7,10 +7,10 @@ import List from '../components/List'; // pure componnet call without brackets
 const dimensions = Dimensions.get('screen');
 
 const Home = () => {
-  const [moviesImages, setMoviesImages] = useState('');
-  const [popularMovies, setPopularMovies] = useState('');
-  const [popularTv, setPopularTv] = useState('');
-  const [familyMovies, setFamiliyMovies] = useState('');
+  const [moviesImages, setMoviesImages] = useState();
+  const [popularMovies, setPopularMovies] = useState();
+  const [popularTv, setPopularTv] = useState();
+  const [familyMovies, setFamiliyMovies] = useState();
   const [error, setError] = useState(false);
 
   const getData = () => {
@@ -48,6 +48,7 @@ const Home = () => {
   return (
     <React.Fragment>
       <ScrollView>
+        {/* upcoming movie image moving slider */}
         {moviesImages && (
           <View style={styles.stliderContainer}>
             <SliderBox
@@ -58,19 +59,22 @@ const Home = () => {
               circleLoop={true}
             />
           </View>)}
-     
+
+        {/* popular moveies   */}
         {popularMovies && (
           <View style={styles.carousel}>
             <List title="Popular Movies" content={popularMovies} />
           </View>
         )}
 
+        {/* popular tv shows   */}
         {popularTv && (
           <View style={styles.carousel}>
             <List title="Popular TV Shows" content={popularTv} />
           </View>
         )}
      
+        {/* family movies   */}
         {familyMovies && (
           <View style={styles.carousel}>
             <List title="Family Movies" content={familyMovies} />
