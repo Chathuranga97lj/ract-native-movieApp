@@ -3,6 +3,7 @@ import {Text, View, StyleSheet, Dimensions, ScrollView, ActivityIndicator} from 
 import {getUpcomingMovies, getPopularMovies, getPopularTv, getFamilyMovies} from '../services/services';
 import {SliderBox} from 'react-native-image-slider-box';
 import List from '../components/List'; // pure componnet call without brackets
+import Error from '../components/Error';
 
 const dimensions = Dimensions.get('screen');
 
@@ -86,7 +87,8 @@ const Home = () => {
           )}
         </ScrollView>
     )}
-      {!loaded && <ActivityIndicator size={'large'} />}  
+      {!loaded && <ActivityIndicator size={'large'} />}
+      {error && <Error />}
     </React.Fragment>
   );
 };
