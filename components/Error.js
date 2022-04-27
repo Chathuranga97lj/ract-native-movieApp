@@ -4,7 +4,7 @@ import PropsTypes from 'prop-types';
 
 const propTypes = {
     errorText1: PropsTypes.string,
-    errorText2: PropsTypes.array,
+    errorText2: PropsTypes.string,
 }
 
 const defaultProps = {

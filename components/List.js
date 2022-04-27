@@ -5,7 +5,7 @@ import PropsTypes from 'prop-types';
 
 const propTypes = {
   title: PropsTypes.string,
-  content: PropsTypes.object,
+  content: PropsTypes.array,
 };
 class List extends React.PureComponent {
   render() {
