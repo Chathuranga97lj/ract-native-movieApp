@@ -1,19 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import {
-  View,
-  StyleSheet,
-  Dimensions,
-  ScrollView,
-  ActivityIndicator,
-} from 'react-native';
-import {
-  getUpcomingMovies,
-  getPopularMovies,
-  getPopularTv,
-  getFamilyMovies,
-} from '../services/services';
+import {Text, View, StyleSheet, Dimensions, ScrollView, ActivityIndicator} from 'react-native';
+import {getUpcomingMovies, getPopularMovies, getPopularTv, getFamilyMovies} from '../services/services';
 import {SliderBox} from 'react-native-image-slider-box';
-import react from 'react';
 import List from '../components/List'; // pure componnet call without brackets
 import Error from '../components/Error';
 
@@ -24,7 +12,6 @@ const Home = () => {
   const [popularMovies, setPopularMovies] = useState();
   const [popularTv, setPopularTv] = useState();
   const [familyMovies, setFamiliyMovies] = useState();
-
   const [error, setError] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
@@ -38,14 +25,10 @@ const Home = () => {
   }
   // use effect for runtime once
   useEffect(() => {
+
     getData()
       .then(
-        ([
-          upcomingMoviesData,
-          popularMoviesData,
-          popularTvData,
-          familyMoviesData,
-        ]) => {
+        ([upcomingMoviesData, popularMoviesData, popularTvData, familyMoviesData]) => {
           const moviesImagesArray = [];
           upcomingMoviesData.forEach(movie => {
             moviesImagesArray.push(
@@ -58,8 +41,8 @@ const Home = () => {
           setFamiliyMovies(familyMoviesData);
         },
       )
-      .catch(() => {
-        setError(true);
+      .catch(err => {
+        setError(err);
       })
       .finally(() => {
         setLoaded(true);
@@ -67,8 +50,8 @@ const Home = () => {
   }, []);
 
   return (
-    <react.Fragment>
-      {loaded && !error && (
+    <React.Fragment>
+      {loaded && (
         <ScrollView>
           {/* upcoming movie image moving slider */}
           {moviesImages && (
@@ -106,7 +89,7 @@ const Home = () => {
     )}
       {!loaded && <ActivityIndicator size={'large'} />}
       {error && <Error />}
-    </react.Fragment>
+    </React.Fragment>
   );
 };
 
@@ -123,7 +106,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-});
+  }
+})
 
 export default Home;
