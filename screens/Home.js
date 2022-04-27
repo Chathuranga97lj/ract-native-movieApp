@@ -39,6 +39,7 @@ const Home = () => {
           setPopularMovies(popularMoviesData);
           setPopularTv(popularTvData);
           setFamiliyMovies(familyMoviesData);
+          setLoaded(true)
         },
       )
       .catch(err => {
@@ -51,7 +52,7 @@ const Home = () => {
 
   return (
     <React.Fragment>
-      {loaded && (
+      {loaded && !error &&(
         <ScrollView>
           {/* upcoming movie image moving slider */}
           {moviesImages && (

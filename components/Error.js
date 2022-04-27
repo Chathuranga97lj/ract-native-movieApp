@@ -4,7 +4,7 @@ import PropsTypes from 'prop-types';
 
 const propTypes = {
     errorText1: PropsTypes.string,
-    errorText2: PropsTypes.string,
+    errorText2: PropsTypes.array,
 }
 
 const defaultProps = {
@@ -36,6 +36,6 @@ const styles = StyleSheet.create({
     }
 })
 
-Error.propTypes = PropsTypes;
-Error.defaultProps = PropsTypes;
+Error.propTypes = propTypes;
+Error.defaultProps = defaultProps;
 export default Error;
